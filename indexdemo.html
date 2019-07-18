@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+    body{background: #dddddd;}
+    .header{background: #cccccc;height: 30px; text-align: center;}
+    .nav{background: #ffffff; height: 30px; text-align: center;}
+    </style>
+  </head>
+  <body style="background color:#fff">
+  <!--定义头部和导航部分的div-->
+  <div id="header" class="header">
+    header
+  </div>
+  <div id="nav" class="nav" onclick="openNew()" tapmode="">
+    nav
+  </div>
+  <!--此处显示子窗口 使用api.openFrame方法-->
+  <!--
+  api.openFrame 打开子窗口
+  api.openFrameGroup 打开子窗口组
+  api.openWin 打开新窗口
+  api.setRefreshHeaderInfo 下拉刷新
+-->
+  </body>
+  <script>
+  function openNew(){
+    api.openWin({
+        name: 'newdemo',
+        url: 'html/o2o_win.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
+  function openFrame(){
+    api.openFrame({
+        name: 'demo',
+        url: 'html/frame1_win.html',
+        rect: {
+            x: 0,
+            y: 60,
+            w: 'auto',
+            h: 'auto'
+        },
+        pageParam: {
+            name: 'test'
+        },
+        bounces: true,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: true,
+        hScrollBarEnabled: true
+    });
+
+  }
+  apiready=function(){
+    openFrame();
+  }
+  </script>
+</html>
